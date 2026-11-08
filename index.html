@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Clínica Hispana Vida Sana</title>
+    
+    <!-- Prevent Caching of HTML shell -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- PWA & Mobile Web App Meta -->
+    <link rel="manifest" href="./manifest.json?v=3.1" />
+    <meta name="theme-color" content="#017144" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Vida Sana" />
+    <link rel="apple-touch-icon" href="./favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Google Identity Services (GIS) for QA RPC OAuth -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+      // If opened via home screen shortcut (WebAPK/standalone), Android OS ALREADY displays its native launch screen.
+      // Suppress the duplicate in-app splash to go directly into the app with zero double-splash!
+      if (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone ||
+        window.location.search.includes('pwa')
+      ) {
+        document.documentElement.classList.add('is-standalone-pwa');
+      }
+    </script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #f5fbf8;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #initial-pre-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: radial-gradient(circle at 50% 30%, #ffffff 0%, #f5fbf8 60%, #e6f4ee 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justifyContent: space-between;
+        padding: 48px 24px 36px 24px;
+        text-align: center;
+      }
+      .splash-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(1, 113, 68, 0.08);
+        padding: 6px 14px;
+        border-radius: 999px;
+        border: 1px solid #dfe9e6;
+        color: #017144;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
+      .splash-logo-box {
+        width: 108px;
+        height: 108px;
+        border-radius: 28px;
+        background: #ffffff;
+        box-shadow: 0 12px 36px rgba(1, 113, 68, 0.16), 0 4px 12px rgba(236, 50, 55, 0.1);
+        border: 2px solid #dfe9e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        margin: 0 auto 20px auto;
+      }
+      .splash-logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .splash-subtitle {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #ec3237;
+        letter-spacing: 1.5px;
+        margin-bottom: 4px;
+      }
+      .splash-title {
+        margin: 0;
+        font-size: 1.9rem;
+        font-weight: 900;
+        color: #017144;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+      }
+      .splash-slogan {
+        margin: 14px 0 0 0;
+        font-size: 0.98rem;
+        font-weight: 600;
+        color: #033b4a;
+        line-height: 1.4;
+      }
+      .splash-tagline {
+        margin-top: 8px;
+        font-size: 0.78rem;
+        color: #676767;
+        font-weight: 500;
+        display: block;
+      }
+      .splash-pulse-container {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+      .splash-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #017144;
+        animation: initialPulse 1.2s infinite ease-in-out;
+      }
+      .splash-dot:nth-child(2) {
+        background: #ec3237;
+        animation-delay: 0.2s;
+      }
+      .splash-dot:nth-child(3) {
+        background: #017144;
+        animation-delay: 0.4s;
+      }
+      @keyframes initialPulse {
+        0%, 100% { transform: scale(0.7); opacity: 0.4; }
+        50% { transform: scale(1.2); opacity: 1; }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-CB5Erdtv.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-oD9Mft9P.css">
+  </head>
+  <body>
+    <div id="root">
+      <div id="initial-pre-splash">
+        <div class="splash-badge">
+          PORTAL OFICIAL DE SALUD
+        </div>
+
+        <div style="max-width: 340px;">
+          <div class="splash-logo-box">
+            <img src="./favicon.svg" alt="Vida Sana" />
+          </div>
+          <div class="splash-subtitle">CLÍNICA HISPANA</div>
+          <h1 class="splash-title">VIDA SANA</h1>
+          <p class="splash-slogan">“Tu salud y tu familia en las mejores manos”</p>
+          <span class="splash-tagline">Atención médica con calidez humana</span>
+        </div>
+
+        <div>
+          <div class="splash-pulse-container">
+            <div class="splash-dot"></div>
+            <div class="splash-dot"></div>
+            <div class="splash-dot"></div>
+          </div>
+          <span style="font-size: 0.72rem; color: #524e4f; font-weight: 600;">
+            Cargando tu información clínica...
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then((reg) => {
+            reg.update();
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                  }
+                });
+              }
+            });
+          }).catch((err) => {
+            console.log('Service Worker registration skipped or failed:', err);
+          });
+
+          let refreshing = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!refreshing) {
+              refreshing = true;
+              window.location.reload();
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
